@@ -1,6 +1,4 @@
 ## Temporally Distributed Networks for Fast Video Semantic Segmentation, CVPR, 2020
-![](https://github.com/feinanshan/TDNet/blob/master/teaser/cityscapes-4.gif "")
-![](https://github.com/feinanshan/TDNet/blob/master/teaser/NYUD-1.gif "")
-![](https://github.com/feinanshan/TDNet/blob/master/teaser/NYUD-2.gif "")
+<img src="https://github.com/feinanshan/TDNet/blob/master/teaser/cityscapes-4.gif" width=512 height=256 />
 
 Coming soon ...
