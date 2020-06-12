@@ -15,7 +15,7 @@ We present TDNet, a temporally distributed network designed for fast and accurat
 1. Linux
 2. Python 3.7
 3. Pytorch 1.1.0
-4. NVIDIA GPU + CUDA CuDNN (CUDA 10.0)
+4. NVIDIA GPU + CUDA 10.0
 
 #### Build
 
