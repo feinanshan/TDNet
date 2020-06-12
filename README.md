@@ -52,7 +52,7 @@ If you find TDNet is helpful in your research, please consider citing:
 
 ## Disclaimer
 
-This is a **Re-implementation** of TDNet, it is not guaranteed to reproduce all numbers in the paper, please refer to the original numbers from [Temporally Distributed Networks for Fast Video Semantic Segmentation](http://openaccess.thecvf.com/content_CVPR_2020/papers/Hu_Temporally_Distributed_Networks_for_Fast_Video_Semantic_Segmentation_CVPR_2020_paper.pdf).
+This is a re-implementation of TDNet, it is not guaranteed to reproduce all numbers in the paper, please refer to the original numbers from [Temporally Distributed Networks for Fast Video Semantic Segmentation](http://openaccess.thecvf.com/content_CVPR_2020/papers/Hu_Temporally_Distributed_Networks_for_Fast_Video_Semantic_Segmentation_CVPR_2020_paper.pdf).
 
 ## References
 
