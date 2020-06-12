@@ -1,0 +1,7 @@
+opencv-python==4.1.1.26
+oyaml==0.9
+Pillow==5.0.0
+matplotlib==2.2.4
+torch-encoding==1.0.1
+tqdm==4.38.0
+PyYAML==5.1.2
