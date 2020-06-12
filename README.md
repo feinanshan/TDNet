@@ -37,7 +37,7 @@ see [TEST_README.md](./Testing/TEST_README.md)
 
 ## Train with TDNet
 
-see [Train_README.md](./Training/TRAIN_README.md)
+see [TRAIN_README.md](./Training/TRAIN_README.md)
 
 
 ## Citation
