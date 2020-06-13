@@ -1,0 +1,60 @@
+model:
+    arch: td2_psp
+    backbone: resnet50
+    syncBN: True
+    path_num: 2
+
+teacher:
+    arch: pspnet_2p
+    backbone: resnet101
+    teacher_model: ./pretrained/cityscapes/psp101.pkl
+    path_num: 2
+    fixed: True
+    syncBN: True
+    
+data:
+    dataset: cityscapes
+    train_split: train
+    val_split: val
+    test_split: test
+    img_rows: 1025
+    img_cols: 2049
+    path: /Research/dataset/cityscapes/
+
+training:
+    n_workers: 16
+    train_iters: 40000
+    batch_size: 8
+    val_interval: 500
+    print_interval: 25
+    loss:
+        name: OhemCELoss2D
+        thresh: 0.7
+        ignore_index: 250
+    optimizer:
+        name: adaoptimizer
+        momentum: 0.9
+        wd: 1.0e-4
+        lr0: 1.0e-2
+        max_iter: 40000
+        power: 0.9
+        warmup_steps: 1000
+        warmup_start_lr: 1.0e-5
+    train_augmentations:
+        rotate: 5
+        colorjtr: [0.5,0.5,0.5]
+        scale: [769,1537]
+        hflip: 0.5
+        rscale: [0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
+        rcrop: [769,1537]
+        colornorm: [[0.485, 0.456, 0.406], [0.229, 0.224, 0.225]]
+    resume: ./pretrained/cityscapes/psp50.pkl
+    visdom: False
+
+validating:
+    resume: ./pretrained/cityscapes/td2-psp50.pkl
+    n_workers: 8
+    batch_size: 4
+    val_augmentations:
+        scale: [769,1537]
+        colornorm: [[0.485, 0.456, 0.406], [0.229, 0.224, 0.225]]

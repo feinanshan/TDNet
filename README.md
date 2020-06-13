@@ -23,14 +23,6 @@ We present TDNet, a temporally distributed network designed for fast and accurat
 pip install -r requirements.txt
 ```
 
-## Dataset
-
-Download and save the datasets
-
-* [Cityscapes](https://www.cityscapes-dataset.com/)
-* [Camvid](http://mi.eng.cam.ac.uk/research/projects/VideoRec/CamVid/)
-* [NYUDepthV2 (~14GB)](https://drive.google.com/file/d/1afnlZoCS7FUzXeQq_UzUdkHB2vmV1jEo/view?usp=sharing)
-
 ## Test with TDNet
 
 see [TEST_README.md](./Testing/TEST_README.md)
