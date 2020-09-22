@@ -32,6 +32,41 @@ def alpha_blend(input_image, segmentation_mask, alpha=0.5):
     blended = input_image * alpha + segmentation_mask * (1 - alpha)
     return blended
 
+def split_fanet_dict(state_dict, path_num =None):
+    backbone_state = OrderedDict()
+    ffm_32_state = OrderedDict()
+    ffm_16_state = OrderedDict()
+    ffm_8_state = OrderedDict()
+    ffm_4_state = OrderedDict()
+    output_state = OrderedDict()
+    output_aux_state = OrderedDict()
+
+    for k, v in state_dict.items():
+        s_k = k.split('.')
+        if s_k[0] == 'resnet':
+            backbone_state['.'.join(s_k[1:])] = v
+
+        if s_k[0] == 'ffm_32':
+            ffm_32_state['.'.join(s_k[1:])] = v
+
+        if s_k[0] == 'ffm_16':
+            ffm_16_state['.'.join(s_k[1:])] = v
+            
+        if s_k[0] == 'ffm_8':
+            ffm_8_state['.'.join(s_k[1:])] = v
+            
+        if s_k[0] == 'ffm_4':
+            ffm_4_state['.'.join(s_k[1:])] = v
+
+        if s_k[0] == 'clslayer_8':
+            output_state['.'.join(s_k[1:])] = v
+
+        if s_k[0] == 'clslayer_32':
+            output_aux_state['.'.join(s_k[1:])] = v
+
+    return backbone_state, ffm_32_state, ffm_16_state, ffm_8_state, ffm_4_state, output_state, output_aux_state
+
+
 def split_psp_dict(state_dict, path_num =None):
     """Split a PSPNet model into different part
        :param state_dict is the loaded DataParallel model_state
@@ -99,73 +134,6 @@ def split_psp_dict(state_dict, path_num =None):
 
     return backbone_state, psp_state, head_state1, head_state2, head_state3, head_state4, auxlayer_state
 
-    """Split a PSPNet model into different part
-       :param state_dict is the loaded DataParallel model_state
-    """
-
-    pretrained1_state = OrderedDict()
-    pretrained2_state = OrderedDict()
-
-    psp1_state = OrderedDict()
-    psp2_state = OrderedDict()
-
-    enc1_state = OrderedDict()
-    enc2_state = OrderedDict()
-
-    atn1_state = OrderedDict()
-    atn2_state = OrderedDict()
-
-    ln1_state = OrderedDict()
-    ln2_state = OrderedDict()
-
-    head1_state = OrderedDict()
-    head2_state = OrderedDict()
-
-    auxlayer1_state = OrderedDict()
-    auxlayer2_state = OrderedDict()
-
-    for k, v in model_state.items():
-        s_k = k.split('.')
-        if s_k[0] == 'pretrained1':
-            pretrained1_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'pretrained2':
-            pretrained2_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'psp1':
-            psp1_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'psp2':
-            psp2_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'enc1':
-            enc1_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'enc2':
-            enc2_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'atn1':
-            atn1_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'atn2':
-            atn2_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'layer_norm1':
-            ln1_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'layer_norm2':
-            ln2_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'head1':
-            head1_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'head2':
-            head2_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'auxlayer1':
-            auxlayer1_state['.'.join(s_k[1:])] = v
-        elif s_k[0] == 'auxlayer2':
-            auxlayer2_state['.'.join(s_k[1:])] = v
-        else:
-            raise ("Param {} not defined.".format(s_k[0]))
-
-    pretrained =  [pretrained1_state, pretrained2_state]
-    psp = [psp1_state, psp2_state]
-    enc = [enc1_state, enc2_state]
-    atn = [atn1_state, atn2_state]
-    ln = [ln1_state, ln2_state]
-    head = [head1_state, head2_state]
-    auxlayer = [auxlayer1_state, auxlayer2_state]
-
-    return pretrained, psp, enc, atn, ln, head, auxlayer
 
 def split_psp_state_dict(state_dict, path_num = 4):
     """Split a PSPNet model into different part

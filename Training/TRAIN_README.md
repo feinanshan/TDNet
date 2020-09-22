@@ -9,8 +9,11 @@ Download and save datasets.
 
 ### 2. Download Models
 
-Download the [pretained models](https://drive.google.com/file/d/1fbvsQWZCpnd_3YxhfZit_90YS92tpJW5/view?usp=sharing), and put them into `./pretrained`. 
+Download the [pretained models](https://drive.google.com/file/d/1fbvsQWZCpnd_3YxhfZit_90YS92tpJW5/view?usp=sharing) for subnetworks, and put them into `./pretrained`. 
 
+* td2_fa18:  takes two [FANet-18](https://arxiv.org/pdf/2007.03815.pdf) as subnetworks.
+* td2_psp50: takes two PSPNet-50 as subnetworks.
+* td4_psp18: takes four PSPNet-18 as subnetworks.
 
 ### 3. Modify Codes
 Modify `*.yml` files in `./config`

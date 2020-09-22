@@ -26,12 +26,12 @@ class td4_psp(nn.Module):
                  multi_grid=True,
                  loss_fn=None,
                  path_num=None,
-                 psp_path = None,
+                 mdl_path = None,
                  teacher = None
                  ):
         super(td4_psp, self).__init__()
 
-        self.psp_path = psp_path
+        self.psp_path = mdl_path
         self.loss_fn = loss_fn
         self.path_num = path_num
         self.norm_layer = norm_layer
