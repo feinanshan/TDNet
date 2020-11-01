@@ -49,7 +49,7 @@ def validate(cfg, args):
     # Setup Model
     teacher = get_model(cfg["teacher"], n_classes)
     model = get_model(cfg["model"], n_classes,psp_path = cfg["training"]["resume"],teacher=teacher).to(device)
-    state = torch.load(cfg["validating"]["resume"])#["model_state"]
+    state = torch.load(cfg["validating"]["resume"])["model_state"]
     model.load_state_dict(state, strict=False)
     model.eval()
     model.to(device)
