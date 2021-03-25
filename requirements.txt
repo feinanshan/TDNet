@@ -4,4 +4,4 @@ Pillow==5.0.0
 matplotlib==2.2.4
 torch-encoding==1.0.1
 tqdm==4.38.0
-PyYAML==5.1.2
+PyYAML==5.4
