@@ -1,4 +1,4 @@
-opencv-python==4.1.1.26
+opencv-python==4.2.0.32
 oyaml==0.9
 Pillow==5.0.0
 matplotlib==2.2.4
